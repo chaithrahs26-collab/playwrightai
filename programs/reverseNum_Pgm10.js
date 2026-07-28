@@ -1,5 +1,6 @@
 let num = 45673
-console.log(num);
+console.log("Given number is:" +num);
 
-num.sort().reverse();
-console.log(num);
+let reverseNum = Number(num.toString().split('').reverse().join(''));
+
+console.log("Reverse of a given number " +num+ " is: " +reverseNum);
