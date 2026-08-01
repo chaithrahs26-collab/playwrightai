@@ -28,7 +28,7 @@ test("Our first playwright test", async ({page})=>{
     await page.locator("//button[@id='back-to-products']").click();
 })
 
-test("@smoke Dropdown validation in saucedemo website", async({page})=>{
+test("Dropdown validation in saucedemo website", async({page})=>{
     await page.goto("https://www.saucedemo.com/");
     await expect(page).toHaveTitle("Swag Labs");
     await page.locator("//input[@placeholder='Username']").fill("standard_user");
@@ -62,4 +62,18 @@ test("Navigation methods in playwright website", async({page})=>{
     await page.waitForTimeout(3000);
     await page.reload();
     await page.waitForTimeout(3000);
+})
+
+test("@smoke Login and logout of saucedemo website", async ({page})=>{
+    await page.goto("https://www.saucedemo.com/");
+    await expect(page).toHaveTitle("Swag Labs");
+    await page.locator("//input[@placeholder='Username']").fill("standard_user");
+    await expect(page.locator("//input[@placeholder='Username']")).toHaveValue("standard_user");
+    await page.locator("//input[@placeholder='Password']").fill("secret_sauce");
+    await expect(page.locator("//input[@placeholder='Password']")).toHaveValue("secret_sauce");
+    await page.locator("//input[@id='login-button']").click();
+    await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html");
+    await page.locator("//button[@id='react-burger-menu-btn']").click();
+    await expect(page.locator("//a[@id='logout_sidebar_link']")).toHaveText("Logout");
+    await page.locator("//a[@id='logout_sidebar_link']").click();
 })
