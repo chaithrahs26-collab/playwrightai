@@ -1,0 +1,2 @@
+This is a sample file for Playwright upload testing.
+It is stored inside the project framework instead of the Desktop folder.
